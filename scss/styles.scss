@@ -1,13 +1,14 @@
 
+@import 'colors.scss';
 
-//Global
+// Global styles
 * {
-    color: ;
+    color: $color-green; // using a variable
     font-size: 1.2rem;
 }
 
 .container {
-    background-color: ;
+    background-color: $color-light-green; // using a variable
     border: 1px solid #000;
     display: flex;
     height: 500px;
@@ -16,22 +17,16 @@
     padding: 1em;
     width: 50%;
 
-    .left {
-        background-color: ;
-        height: 100%;
-        width: 69%;
-        position: relative;
-    }
-
-    .right {
-        background-color: ;
+    // Nesting
+    .left, .right {
         height: 100%;
         position: relative;
-        width: 29%;
+        background-color: $color-white; // using a variable
 
-        .button {
-            background-color: ;
-            color: ;
+        // Mixin example (for button)
+        @mixin button-style {
+            background-color: $color-yellow;
+            color: $color-green;
             border: 0;
             border-radius: 10px;
             cursor: pointer;
@@ -40,8 +35,12 @@
             font-size: 1rem;
             font-weight: bold;
             padding: 0.5em 2em;
+        }
 
-            //this is to center content vertically
+        .button {
+            @include button-style; // applying mixin
+
+            // Center content vertically
             position: absolute;
             top: 100%;
             left: 50%;
@@ -49,4 +48,11 @@
         }
     }
 
+    .left {
+        width: 69%;
+    }
+
+    .right {
+        width: 29%;
+    }
 }
